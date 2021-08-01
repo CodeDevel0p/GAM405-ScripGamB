@@ -57,9 +57,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Battery.cs" />
     <Compile Include="Assets\GameUI_Handler.cs" />
+    <Compile Include="Assets\Goal_Post.cs" />
     <Compile Include="Assets\HelloWorld.cs" />
     <Compile Include="Assets\MainMenuHandler.cs" />
+    <Compile Include="Assets\Player_Controls.cs" />
+    <None Include="Assets\Credits_Or_ExtraNotes.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
