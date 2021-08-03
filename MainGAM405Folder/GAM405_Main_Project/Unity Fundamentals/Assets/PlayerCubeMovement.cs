@@ -39,6 +39,7 @@ public class PlayerCubeMovement : MonoBehaviour
     }
 
     // Update is called once per frame
+    // Use Update() for Inputs
     void Update()
     {
         //Retrieve Inputs
@@ -59,6 +60,7 @@ public class PlayerCubeMovement : MonoBehaviour
     }
 
     //Interactions with physics must be handled in the void FixedUpdate() function.
+    //When doing physics, use FixedUpdate() as it handles.
     void FixedUpdate()
     {
         if (moveType == MovementType.ByAddForce)
