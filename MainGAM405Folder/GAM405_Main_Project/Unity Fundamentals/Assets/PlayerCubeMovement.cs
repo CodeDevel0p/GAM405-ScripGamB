@@ -91,5 +91,10 @@ public class PlayerCubeMovement : MonoBehaviour
         {
             rb.MoveRotation(transform.rotation * Quaternion.Euler(0, 0, horizontalInput * RotationSpeed * Time.deltaTime));
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            transform.position += new Vector3 (0, verticalInput, 0) * moveSpeed * Time.deltaTime;
+        }
     }
 }
