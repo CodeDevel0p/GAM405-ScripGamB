@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Battery
+  - Enemy
+  - Clock
+  - Flagpole
+  - Tosser
   layers:
   - Default
   - TransparentFX
@@ -14,11 +19,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Battery
+  - Enemy
+  - Clock
+  - Flagpole
   - 
   - 
   - 

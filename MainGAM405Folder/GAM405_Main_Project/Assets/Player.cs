@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [SerializeField]
 public class Player : Character
 {
+    AudioSource playerAudio;
 
     public enum MovementType
     {
@@ -23,33 +24,41 @@ public class Player : Character
     public MovementType moveType = MovementType.TransformPosition;
     public RotateType rotateType = RotateType.TransformRotation;
 
-
-    public float launchDistance = 5.0f;
+    public float jumpBoost = 1.5f;
+    public float launchDistance = 3.0f;
     new public float health = 6.0f;
     new public float moveSpeed = 1.0f;
-    new public float jumpHeight = 1.0f;
+    new public float jumpHeight = 3.0f;
     new public float throwDistance = 1;
     protected float moveHorizontal, moveVertical, jumpUp, blastLaunch;
-    private float playerVelocity = 8;
+    private float playerVelocity = 2.5f;
     public string returnMenuPress = "MainMenuScene";
+    public string levelClearScene = "Player_Win_Scene";
+    public string gameOverScene = "Player_Lose_Scene";
     protected Rigidbody rb;
-    
+
+    public AudioClip jumpAudio;
+    public AudioClip blastOffAudio;
+    public AudioClip itemPickup;
+    public AudioClip hurtSound;
+
     // Start is called before the first frame update
     void Start()
     {
+        playerAudio = GetComponent<AudioSource>();
         InitialStats();
         rb = gameObject.GetComponent<Rigidbody>();
         Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Here are the inputs based on horizontal and vertical inputs, instead of the WASD format.
+        //Here are the inputs based on horizontal and vertical inputs, Horizontal to move left and right, Vertical is intended to drop the player quickly down
         moveHorizontal = Input.GetAxis("Horizontal");
-        
         moveVertical = Input.GetAxis("Vertical");
-        jumpUp = moveVertical;
+        
 
         //Move forwards at a certain speed by the transform
         if (moveType == MovementType.TransformPosition)
@@ -59,7 +68,21 @@ public class Player : Character
         //When the player jumps
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.AddForce(Vector3.up * jumpHeight, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * jumpHeight * jumpBoost, ForceMode.Impulse);
+            
+
+        }
+        //Launches the player with the jet backpack attached to them
+        if (Input.GetKeyDown(KeyCode.Q))
+        { 
+             rb.AddForce(Vector3.up * launchDistance * playerVelocity, ForceMode.VelocityChange);
+        }
+
+
+        //Return to the main menu and reset progress
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(returnMenuPress);
         }
     }
 
@@ -72,53 +95,34 @@ public class Player : Character
     {
         health = 6; moveSpeed = 3; jumpHeight = 3; throwDistance = 2;
         Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
-    } 
+    }
 
-    //Contains all the player's movement and controls.
-    public void PlayerControls ()
+    void OnCollisionEnter(Collision collision)
     {
-
-
-        //Moves the player to the right
-        if (Input.GetKeyDown(KeyCode.D))
+        if (collision.gameObject.CompareTag("Flagpole"))
         {
-
-            GetComponent<Transform>().Translate(Vector3.right * moveSpeed);
-        }
-        //Moves player to the left
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            GetComponent<Transform>().Translate(Vector3.left * moveSpeed);
+            Debug.Log("The game has been won!");
+            SceneManager.LoadScene("Player_Win_Scene");
         }
 
-        //Performs a jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("The player has collided with the enemy!");
 
         }
-
-        //Launches the player into the air
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (collision.gameObject.CompareTag("Battery"))
         {
-
+            Debug.Log("The player has collided with a battery - Gain a certain stat increase");
         }
-
-        //Player will grab an object
-        if (Input.GetKeyDown(KeyCode.R))
+        if (collision.gameObject.CompareTag("Clock"))
         {
-
+            Debug.Log("The player has collided with a clock - increase the timer!");
         }
-
-        //Throws an object.
-        if (Input.GetKeyDown(KeyCode.T))
+        if (collision.gameObject.CompareTag("Tosser"))
         {
-
-        }
-
-        //Return to the main menu and reset progress
-        if (Input.GetKey(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(returnMenuPress);
+            Debug.Log("I'm a chuckster!");
+            rb.AddForce( (Vector3.left + Vector3.up) * (playerVelocity) * jumpBoost, ForceMode.Impulse);
         }
     }
+
 }

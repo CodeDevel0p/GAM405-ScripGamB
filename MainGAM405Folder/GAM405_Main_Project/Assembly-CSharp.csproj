@@ -58,6 +58,7 @@
      <Compile Include="Assets\Battery.cs" />
      <Compile Include="Assets\ButtonHandler.cs" />
      <Compile Include="Assets\Character.cs" />
+     <Compile Include="Assets\EndGameButtons.cs" />
      <Compile Include="Assets\Enemy.cs" />
      <Compile Include="Assets\GameUI_Handler.cs" />
      <Compile Include="Assets\Goal_Post.cs" />
@@ -629,6 +630,22 @@
     <ProjectReference Include="Unity.TextMeshPro.csproj">
       <Project>{45CC83C6-5FC0-9244-3C7E-569FEDDD0C87}</Project>
       <Name>Unity.TextMeshPro</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.csproj">
+      <Project>{64418896-03FE-D224-F0A1-910E420BEBAE}</Project>
+      <Name>Unity.ProBuilder</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.Editor.csproj">
+      <Project>{37FECF01-4BD7-8B07-E8A0-FCF731E03C21}</Project>
+      <Name>Unity.ProBuilder.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.AssetIdRemapUtility.csproj">
+      <Project>{F9FF0F9F-3459-3D95-7CF3-D7D5638C8A3D}</Project>
+      <Name>Unity.ProBuilder.AssetIdRemapUtility</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.AddOns.Editor.csproj">
+      <Project>{171BEBB6-578D-4999-0F09-63E5FA6BADAA}</Project>
+      <Name>Unity.ProBuilder.AddOns.Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

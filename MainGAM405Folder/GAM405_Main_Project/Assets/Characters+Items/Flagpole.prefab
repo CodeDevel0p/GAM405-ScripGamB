@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 250865993099196559}
   - component: {fileID: 4505432058712807178}
   - component: {fileID: 8220109693900414907}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bd99e0e2c87a6b8479bd092c204e0cec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -105,9 +105,9 @@ GameObject:
   - component: {fileID: 8322612922138697866}
   - component: {fileID: 3503678517624869265}
   - component: {fileID: 7431508418226244246}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flagpole
-  m_TagString: Untagged
+  m_TagString: Flagpole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +154,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 299c99ed1edf4d747b54fe1bd326ee34, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -201,7 +201,7 @@ GameObject:
   - component: {fileID: 3464164918642433682}
   - component: {fileID: 3705389501780417735}
   - component: {fileID: 1860570838042552119}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 279d32b2f56298f4b8a2d5a758a139c3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -737,7 +737,7 @@ GameObject:
   - component: {fileID: 1441510947934812594}
   m_Layer: 0
   m_Name: G.O.O.D (Player)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -841,7 +841,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 120
   m_CollisionDetection: 0
 --- !u!114 &1441510947934812594
 MonoBehaviour:
@@ -855,10 +855,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf0597b690c0e14f893921ede09c1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioData: {fileID: 0}
+  moveType: 0
+  rotateType: 0
+  jumpBoost: 5
+  launchDistance: 5
   health: 6
   moveSpeed: 5
   jumpHeight: 5
   throwDistance: 5
+  returnMenuPress: MainMenuScene
+  levelClearScene: Player_Win_Scene
+  gameOverScene: Player_Lose_Scene
+  jumpAudio: {fileID: 0}
+  blastOffAudio: {fileID: 0}
+  itemPickup: {fileID: 0}
+  hurtSound: {fileID: 0}
 --- !u!1 &267256579427404655
 GameObject:
   m_ObjectHideFlags: 0

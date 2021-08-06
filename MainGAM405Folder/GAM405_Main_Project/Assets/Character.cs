@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
 
     protected float health, moveSpeed, jumpHeight, throwDistance;
     protected string characterType;
+    public AudioSource audioData;
 
     public Character()
     {
