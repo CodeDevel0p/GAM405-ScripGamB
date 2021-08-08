@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Battery : MonoBehaviour
 {
+
+    public enum BatteryType
+    {
+        Red,
+        Blue,
+        Green,
+        Yellow
+    }
+
     // Start is called before the first frame update
     void Start()
     {

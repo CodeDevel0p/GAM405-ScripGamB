@@ -30,6 +30,7 @@ public class Player : Character
     new public float moveSpeed = 1.0f;
     new public float jumpHeight = 3.0f;
     new public float throwDistance = 1;
+    public int lifeCount = 4;
     protected float moveHorizontal, moveVertical, jumpUp, blastLaunch;
     private float playerVelocity = 2.5f;
     public string returnMenuPress = "MainMenuScene";
@@ -58,7 +59,6 @@ public class Player : Character
         //Here are the inputs based on horizontal and vertical inputs, Horizontal to move left and right, Vertical is intended to drop the player quickly down
         moveHorizontal = Input.GetAxis("Horizontal");
         moveVertical = Input.GetAxis("Vertical");
-        
 
         //Move forwards at a certain speed by the transform
         if (moveType == MovementType.TransformPosition)
@@ -78,37 +78,47 @@ public class Player : Character
              rb.AddForce(Vector3.up * launchDistance * playerVelocity, ForceMode.VelocityChange);
         }
 
-
         //Return to the main menu and reset progress
         if (Input.GetKey(KeyCode.Escape))
         {
             SceneManager.LoadScene(returnMenuPress);
         }
+
     }
 
     public void FixedUpdate()
     {
 
     }
-    
+    //The main stats the player loads in with at the start of the game.
     public override void InitialStats()
     {
         health = 6; moveSpeed = 3; jumpHeight = 3; throwDistance = 2;
-        Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
+        Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance + "Lives Left = " + lifeCount);
     }
 
+    //This checks the main collisions in the game.
     void OnCollisionEnter(Collision collision)
     {
+
+
+        //Game is won when the player collides with the flagpole.
         if (collision.gameObject.CompareTag("Flagpole"))
         {
             Debug.Log("The game has been won!");
             SceneManager.LoadScene("Player_Win_Scene");
         }
 
+        //Take damage upon colliding with the B.A.D.D.I Enemies.
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("The player has collided with the enemy!");
-
+            health--;
+            
+            if (health == 0)
+            {
+                SceneManager.LoadScene(gameOverScene);
+            }
         }
         if (collision.gameObject.CompareTag("Battery"))
         {
@@ -118,11 +128,34 @@ public class Player : Character
         {
             Debug.Log("The player has collided with a clock - increase the timer!");
         }
+        //Get violently thrown up and away by a tosser robot enemy.
         if (collision.gameObject.CompareTag("Tosser"))
         {
             Debug.Log("I'm a chuckster!");
-            rb.AddForce( (Vector3.left + Vector3.up) * (playerVelocity) * jumpBoost, ForceMode.Impulse);
+            rb.AddForce( (Vector3.left + Vector3.up) * (playerVelocity * 2.5f) * jumpBoost, ForceMode.Impulse);
+        }
+        //Lose a life and start back at the beginning if touching with a spike.
+        if (collision.gameObject.CompareTag("Spikes"))
+        {
+            Debug.Log("OUCH!!!");
+            lifeCount--;
+            if (lifeCount == 0)
+            {
+                SceneManager.LoadScene(gameOverScene);
+            }
         }
     }
+    //This is for the batteries and clock pick-up items.
+    void OnTriggerEnter (Collision other)
+    {
+
+    }
+
+    //Keep track of player's stats with this function
+/*    public void PlayerStatsTrack ()
+    {
+
+        Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
+    }*/
 
 }

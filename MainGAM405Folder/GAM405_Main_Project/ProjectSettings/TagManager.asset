@@ -10,6 +10,7 @@ TagManager:
   - Clock
   - Flagpole
   - Tosser
+  - Spikes
   layers:
   - Default
   - TransparentFX
