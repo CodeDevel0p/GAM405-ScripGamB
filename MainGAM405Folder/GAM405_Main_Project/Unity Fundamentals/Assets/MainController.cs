@@ -13,7 +13,10 @@ public class MainController : MonoBehaviour
     public UnityEventSingleParam Event2; //A UnityEvent that requires an integer or parameter passed in the invocation
 
     //For C# Events
-    public delegate void SimpleEventHandler(int value); //Defines the parameters and how we create the delegate. 
+    public delegate void SimpleEventHandler(int value); //Defines the parameters and how we create the delegate. Defines the structure for the event and the variable it listens for.
+    public delegate void BasicEvent(float nextVal); //Format of events, listeners will hear the parameters.
+
+    public event BasicEvent myEvent; //The actual event.
     public SimpleEventHandler Event3; //Creates a variable that holds events
 
     // Start is called before the first frame update
@@ -22,6 +25,8 @@ public class MainController : MonoBehaviour
         // += Adds the display function as a listener for Event3
         // -= handles removing the listener
         Event3 += DisplayCSharpEvent;
+        myEvent += OutputTime;
+        myEvent.Invoke(20);
     }
 
     // Update is called once per frame
@@ -44,5 +49,10 @@ public class MainController : MonoBehaviour
     public void DisplayCSharpEvent(int value)
     {
         Debug.Log("Displayed C# Value = :" + value);
+    }
+
+    public void OutputTime(float time)
+    {
+        Debug.Log(time);
     }
 }
