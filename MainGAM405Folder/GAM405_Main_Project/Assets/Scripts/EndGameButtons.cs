@@ -9,10 +9,14 @@ public class EndGameButtons : MonoBehaviour
     public string returnToLevel = "Game_Level_1";
     public string mainMenuReturn = "MainMenuScene";
 
+    public AudioClip endGameMusic;
+    public AudioSource musicPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        musicPlayer = GetComponent<AudioSource>();
+        musicPlayer.Play();
     }
 
     // Update is called once per frame
@@ -31,5 +35,8 @@ public class EndGameButtons : MonoBehaviour
     {
         Debug.Log("The level has restarted");
         SceneManager.LoadScene("MainMenuScene");
+        
     }
+
+
 }

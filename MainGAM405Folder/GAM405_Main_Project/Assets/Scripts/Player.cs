@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 [SerializeField]
 public class Player : Character
 {
-    AudioSource playerAudio;
 
     public enum MovementType
     {
@@ -27,7 +26,7 @@ public class Player : Character
     public float jumpBoost = 1.5f;
     public float launchDistance = 3.0f;
     new public float health = 6.0f;
-    new public float moveSpeed = 1.0f;
+    new public float moveSpeed = 3.0f;
     new public float jumpHeight = 3.0f;
     new public float throwDistance = 1;
     public int lifeCount = 4;
@@ -42,6 +41,7 @@ public class Player : Character
     public AudioClip blastOffAudio;
     public AudioClip itemPickup;
     public AudioClip hurtSound;
+    public AudioSource playerAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -50,7 +50,7 @@ public class Player : Character
         InitialStats();
         rb = gameObject.GetComponent<Rigidbody>();
         Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
-
+        Debug.ClearDeveloperConsole();
     }
 
     // Update is called once per frame
@@ -69,13 +69,14 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpHeight * jumpBoost, ForceMode.Impulse);
-            
+            playerAudio.PlayOneShot(jumpAudio);
 
         }
         //Launches the player with the jet backpack attached to them
         if (Input.GetKeyDown(KeyCode.Q))
         { 
              rb.AddForce(Vector3.up * launchDistance * playerVelocity, ForceMode.VelocityChange);
+            playerAudio.PlayOneShot(blastOffAudio, 0.4f);
         }
 
         //Return to the main menu and reset progress
@@ -113,6 +114,7 @@ public class Player : Character
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("The player has collided with the enemy!");
+            playerAudio.PlayOneShot(hurtSound);
             health--;
             
             if (health == 0)
@@ -133,6 +135,7 @@ public class Player : Character
         {
             Debug.Log("I'm a chuckster!");
             rb.AddForce( (Vector3.left + Vector3.up) * (playerVelocity * 2.5f) * jumpBoost, ForceMode.Impulse);
+            playerAudio.PlayOneShot(blastOffAudio, 0.1f); ;
         }
         //Lose a life and start back at the beginning if touching with a spike.
         if (collision.gameObject.CompareTag("Spikes"))
@@ -146,16 +149,28 @@ public class Player : Character
         }
     }
     //This is for the batteries and clock pick-up items.
-    void OnTriggerEnter (Collision other)
+    void OnTriggerEnter(Collision other)
     {
 
     }
+    
+    //For the player's sound effects.
+    void PlayerSFX()
+    {
+       
+    }
 
     //Keep track of player's stats with this function
-/*    public void PlayerStatsTrack ()
+    public void PlayerStatsTrack ()
     {
+        int playerLives, lifeCount;
+        float playerHealth, healthValue;
+        float playerMovespeed, moveValue;
+        float playerJumpHeight, jumpValue;
+        float playerThrowDistance, throwValue;
+        float remainingTimeLeft, timerValue;
 
-        Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
-    }*/
+    Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
+    }
 
 }

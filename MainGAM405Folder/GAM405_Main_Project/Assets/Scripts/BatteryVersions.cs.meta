@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e983f04502f28ce41800eeff7a50bfef
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - redBatteryOBJ: {fileID: 2347617137457816977, guid: d53133973d6a6764e8f7cb97fa8d4338,
+      type: 3}
+  - bluBatteryOBJ: {instanceID: 0}
+  - grnBatteryOBJ: {instanceID: 0}
+  - ylwBatteryOBJ: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

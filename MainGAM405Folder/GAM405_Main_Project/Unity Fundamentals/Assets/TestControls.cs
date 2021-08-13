@@ -12,12 +12,15 @@ public class TestControls : MonoBehaviour
     private Rigidbody rb;
     public SphereCollider col;
     public LayerMask ground;
+    public AudioClip JumpEffect;
+    protected AudioSource source;
     
     // Start is called before the first frame update
     void Start()
     {
         col = GetComponent<SphereCollider>();
         rb = GetComponent<Rigidbody>();
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -26,6 +29,7 @@ public class TestControls : MonoBehaviour
         if (isGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
             rb.AddForce(Vector3.up * jumpforce, ForceMode.Impulse);
+            PlaySound();
         }
     }
 
@@ -33,16 +37,17 @@ public class TestControls : MonoBehaviour
     {
         float horizontalMove = Input.GetAxis("Horizontal");
         float verticalMove = Input.GetAxis("Vertical");
-
-
         Vector3 Movement = new Vector3(horizontalMove, 0, verticalMove);
-
         rb.AddForce(Movement * moveSpeed);
-
     }
+
     private bool isGrounded()
     {
-        
         return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x, col.bounds.min.y, col.bounds.center.z), col.radius * 0.9f, ground);
+    }
+
+    public void PlaySound()
+    {
+        source.PlayOneShot(JumpEffect);
     }
 }
