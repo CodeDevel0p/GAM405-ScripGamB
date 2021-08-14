@@ -122,10 +122,7 @@ public class Player : Character
                 SceneManager.LoadScene(gameOverScene);
             }
         }
-        if (collision.gameObject.CompareTag("Battery"))
-        {
-            Debug.Log("The player has collided with a battery - Gain a certain stat increase");
-        }
+
         if (collision.gameObject.CompareTag("Clock"))
         {
             Debug.Log("The player has collided with a clock - increase the timer!");

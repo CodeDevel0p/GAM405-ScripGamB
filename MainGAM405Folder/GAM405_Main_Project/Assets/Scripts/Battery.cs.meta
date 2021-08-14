@@ -3,7 +3,13 @@ guid: 0340d732cf882dc42b9f1f3112067b4a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - redBatteryOBJ: {instanceID: 0}
+  - bluBatteryOBJ: {instanceID: 0}
+  - grnBatteryOBJ: {instanceID: 0}
+  - ylwBatteryOBJ: {instanceID: 0}
+  - PowerUp: {fileID: 8300000, guid: ee29ad394c20ea540a860050964efe75, type: 3}
+  - source: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
