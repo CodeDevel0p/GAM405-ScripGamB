@@ -163,14 +163,7 @@ public class Player : Character
     //Keep track of player's stats with this function
     public void PlayerStatsTrack ()
     {
-        int playerLives, lifeCount;
-        float playerHealth, healthValue;
-        float playerMovespeed, moveValue;
-        float playerJumpHeight, jumpValue;
-        float playerThrowDistance, throwValue;
-        float remainingTimeLeft, timerValue;
-
-    Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
+        Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " ThrowDistance = " + throwDistance);
     }
 
 }

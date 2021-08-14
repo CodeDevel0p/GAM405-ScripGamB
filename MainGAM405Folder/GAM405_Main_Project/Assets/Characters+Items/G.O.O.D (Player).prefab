@@ -864,13 +864,15 @@ MonoBehaviour:
   moveSpeed: 5
   jumpHeight: 5
   throwDistance: 5
+  lifeCount: 4
   returnMenuPress: MainMenuScene
   levelClearScene: Player_Win_Scene
   gameOverScene: Player_Lose_Scene
-  jumpAudio: {fileID: 0}
-  blastOffAudio: {fileID: 0}
-  itemPickup: {fileID: 0}
-  hurtSound: {fileID: 0}
+  jumpAudio: {fileID: 8300000, guid: 49ef193b13136b24ba57341da05407be, type: 3}
+  blastOffAudio: {fileID: 8300000, guid: 21e46859d5ac7db49a706fadc67fa104, type: 3}
+  itemPickup: {fileID: 8300000, guid: ee29ad394c20ea540a860050964efe75, type: 3}
+  hurtSound: {fileID: 8300000, guid: 8e0cc58aebad143419a1ff3215064343, type: 3}
+  playerAudio: {fileID: 0}
 --- !u!1 &267256579427404655
 GameObject:
   m_ObjectHideFlags: 0

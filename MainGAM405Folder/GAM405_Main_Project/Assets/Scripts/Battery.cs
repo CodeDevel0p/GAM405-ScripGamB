@@ -42,7 +42,7 @@ public class Battery : MonoBehaviour
 
         if (redBattery == BatteryType.Red)
         {
-
+            
         }
 
         if (bluBattery == BatteryType.Blue)

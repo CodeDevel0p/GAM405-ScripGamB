@@ -14,11 +14,13 @@ public class ButtonHandler : MonoBehaviour
     public AudioClip buttonSelect;
     public AudioClip musicPlay;
     protected AudioSource source;
+    public Canvas controlCanvas;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        controlCanvas.enabled = false;
         source = GetComponent<AudioSource>();
     }
 
@@ -40,6 +42,7 @@ public class ButtonHandler : MonoBehaviour
     {
         OnPlay();
         Debug.Log("Loads up the controls");
+        controlCanvas.enabled = true;
 
     }
 
