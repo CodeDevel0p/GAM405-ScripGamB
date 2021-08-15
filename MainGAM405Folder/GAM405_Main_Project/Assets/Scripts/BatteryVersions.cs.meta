@@ -9,6 +9,8 @@ MonoImporter:
   - bluBatteryOBJ: {instanceID: 0}
   - grnBatteryOBJ: {instanceID: 0}
   - ylwBatteryOBJ: {instanceID: 0}
+  - PowerUp: {fileID: 8300000, guid: ee29ad394c20ea540a860050964efe75, type: 3}
+  - source: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

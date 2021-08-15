@@ -42,33 +42,57 @@ public class Battery : MonoBehaviour
 
         if (redBattery == BatteryType.Red)
         {
-            
+            float addValue = throwDistanceUp;
         }
 
         if (bluBattery == BatteryType.Blue)
         {
-
+            float addValue = moveSpeedUp;
         }
         
         if (grnBattery == BatteryType.Green)
         {
-
+            float addValue = healthUp;
         }
 
         if (ylwBattery == BatteryType.Yellow)
         {
-
+            float addValue = jumpHeightUp;
         }
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && this.gameObject == redBatteryOBJ)
         {
-            Debug.Log("The player has absorbed a power up!");
+            Debug.Log("The player has absorbed a RED power up! Blast Distance Up!");
             source.Play();
             Destroy(this);
-         
+
+        }
+
+        if (other.CompareTag("Player") && this.gameObject == bluBatteryOBJ)
+        {
+            Debug.Log("The player has absorbed a BLUE power up! Move Speed Up!");
+            source.Play();
+            Destroy(this);
+
+        }
+
+        if (other.CompareTag("Player") && this.gameObject == grnBatteryOBJ)
+        {
+            Debug.Log("The player has absorbed a GREEN power up! Health Restored");
+            source.Play();
+            Destroy(this);
+
+        }
+
+        if (other.CompareTag("Player") && this.gameObject == ylwBatteryOBJ)
+        {
+            Debug.Log("The player has absorbed a YELLOW power up! Jump Height Up!");
+            source.Play();
+            Destroy(this);
+
         }
     }
 }

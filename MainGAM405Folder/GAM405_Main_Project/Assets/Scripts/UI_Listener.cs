@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class CubeListener : MonoBehaviour
+public class UI_Listener : MonoBehaviour
 {
 
 
@@ -16,9 +17,5 @@ public class CubeListener : MonoBehaviour
     void Update()
     {
         
-    }
-    public void Display1()
-    {
-        Debug.Log("Cube 1");
     }
 }

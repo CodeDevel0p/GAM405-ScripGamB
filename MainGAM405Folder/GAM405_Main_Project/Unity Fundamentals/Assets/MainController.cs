@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events; //Include events with using UnityEngine.Events
 
 
@@ -19,6 +21,14 @@ public class MainController : MonoBehaviour
     public event BasicEvent myEvent; //The actual event.
     public SimpleEventHandler Event3; //Creates a variable that holds events
 
+    public UnityEventSingleParam Event4;
+
+
+    public delegate void UpdateTextEvent(Text updateText);
+    public event UpdateTextEvent Textupdate;
+
+    public Text testString1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +37,7 @@ public class MainController : MonoBehaviour
         Event3 += DisplayCSharpEvent;
         myEvent += OutputTime;
         myEvent.Invoke(20);
+       // Textupdate += Event4;
     }
 
     // Update is called once per frame
@@ -44,6 +55,14 @@ public class MainController : MonoBehaviour
         {
             Event3(20);
         }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            const string V = "time";
+
+           // .//Textupdate.Invoke(ToString("a"));
+        }
+        
+
     }
 
     public void DisplayCSharpEvent(int value)
