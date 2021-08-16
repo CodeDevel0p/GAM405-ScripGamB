@@ -57,23 +57,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AudioButtonScript.cs" />
-    <Compile Include="Assets\ButtonHandler.cs" />
-    <Compile Include="Assets\CubeController.cs" />
-    <Compile Include="Assets\CubeListener.cs" />
-    <Compile Include="Assets\GroundController.cs" />
-    <Compile Include="Assets\LevelSwitcher.cs" />
-    <Compile Include="Assets\MainController.cs" />
-    <Compile Include="Assets\MainMenu.cs" />
-    <Compile Include="Assets\MySettingsTest.cs" />
-    <Compile Include="Assets\PlayerCubeMovement.cs" />
-    <Compile Include="Assets\PrefabSpawner.cs" />
-    <Compile Include="Assets\SphereController.cs" />
-    <Compile Include="Assets\SphereListener.cs" />
-    <Compile Include="Assets\SphereTriggers.cs" />
-    <Compile Include="Assets\TestControls.cs" />
-    <Compile Include="Assets\UI_Listener.cs" />
-    <Compile Include="Assets\WallController.cs" />
+    <Compile Include="Assets\HUDMARKER.cs" />
+    <Compile Include="Assets\MessageReceiver.cs" />
+    <Compile Include="Assets\MessageSender.cs" />
+    <Compile Include="Assets\ObjectPicker.cs" />
+    <Compile Include="Assets\Scripts\AudioButtonScript.cs" />
+    <Compile Include="Assets\Scripts\ButtonHandler.cs" />
+    <Compile Include="Assets\Scripts\CubeController.cs" />
+    <Compile Include="Assets\Scripts\CubeListener.cs" />
+    <Compile Include="Assets\Scripts\GroundController.cs" />
+    <Compile Include="Assets\Scripts\LevelSwitcher.cs" />
+    <Compile Include="Assets\Scripts\MainController.cs" />
+    <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\MySettingsTest.cs" />
+    <Compile Include="Assets\Scripts\PlayerCubeMovement.cs" />
+    <Compile Include="Assets\Scripts\PrefabSpawner.cs" />
+    <Compile Include="Assets\Scripts\Ray_Cast_Demo.cs" />
+    <Compile Include="Assets\Scripts\SphereController.cs" />
+    <Compile Include="Assets\Scripts\SphereListener.cs" />
+    <Compile Include="Assets\Scripts\SphereTriggers.cs" />
+    <Compile Include="Assets\Scripts\TestControls.cs" />
+    <Compile Include="Assets\Scripts\UI_Listener.cs" />
+    <Compile Include="Assets\Scripts\WallController.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
