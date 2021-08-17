@@ -861,10 +861,10 @@ MonoBehaviour:
   rotateType: 0
   jumpBoost: 5
   launchDistance: 5
-  health: 6
-  moveSpeed: 11.94
-  jumpHeight: 5
   blastOffDistance: 1
+  health: 6
+  moveSpeed: 3
+  jumpHeight: 5
   lifeCount: 4
   gameOverScene: Player_Lose_Scene
   jumpAudio: {fileID: 8300000, guid: 49ef193b13136b24ba57341da05407be, type: 3}

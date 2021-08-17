@@ -13,12 +13,7 @@ public class Battery : MonoBehaviour
         Yellow
     }
 
-    public GameObject redBatteryOBJ, bluBatteryOBJ, grnBatteryOBJ, ylwBatteryOBJ;
-   BatteryType redBattery = BatteryType.Red;
-   BatteryType bluBattery = BatteryType.Blue;
-   BatteryType grnBattery = BatteryType.Green;
-   BatteryType ylwBattery = BatteryType.Yellow;
-
+    public BatteryType batteryType;
     protected Rigidbody rb;
 
     public float throwDistanceUp = 3.0f;
@@ -28,71 +23,44 @@ public class Battery : MonoBehaviour
     public AudioClip PowerUp;
     public AudioSource source;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        source = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-       
 
-        if (redBattery == BatteryType.Red)
-        {
-            float addValue = throwDistanceUp;
-        }
-
-        if (bluBattery == BatteryType.Blue)
-        {
-            float addValue = moveSpeedUp;
-        }
-        
-        if (grnBattery == BatteryType.Green)
-        {
-            float addValue = healthUp;
-        }
-
-        if (ylwBattery == BatteryType.Yellow)
-        {
-            float addValue = jumpHeightUp;
-        }
     }
-
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && this.gameObject == redBatteryOBJ)
+        if (other.GetComponent<Player>())
         {
-            Debug.Log("The player has absorbed a RED power up! Blast Distance Up!");
-            source.Play();
-            Destroy(this);
+            switch (batteryType)
+            {
+                case BatteryType.Red:
+                    Debug.Log("The player has absorbed a RED power up! Blast Distance Up!");
+                    Destroy(this.gameObject);
+                    break;
+                    
+                case BatteryType.Blue:
+                    Debug.Log("The player has absorbed a BLUE power up! Move Speed Up!");
+                    Destroy(this.gameObject);
+                    break;
 
+                case BatteryType.Green:
+                    Debug.Log("The player has absorbed a GREEN power up! Health Up!");
+                    Destroy(this.gameObject);
+                    break;
+
+                case BatteryType.Yellow:
+                    Debug.Log("The player has absorbed a YELLOW power up! Jump Height Up!");
+                    Destroy(this.gameObject);
+                    break;
+            }
         }
 
-        if (other.CompareTag("Player") && this.gameObject == bluBatteryOBJ)
-        {
-            Debug.Log("The player has absorbed a BLUE power up! Move Speed Up!");
-            source.Play();
-            Destroy(this);
-
-        }
-
-        if (other.CompareTag("Player") && this.gameObject == grnBatteryOBJ)
-        {
-            Debug.Log("The player has absorbed a GREEN power up! Health Restored");
-            source.Play();
-            Destroy(this);
-
-        }
-
-        if (other.CompareTag("Player") && this.gameObject == ylwBatteryOBJ)
-        {
-            Debug.Log("The player has absorbed a YELLOW power up! Jump Height Up!");
-            source.Play();
-            Destroy(this);
-
-        }
     }
 }

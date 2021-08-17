@@ -107,8 +107,8 @@ GameObject:
   - component: {fileID: 2347617137457816979}
   - component: {fileID: 2347617137457816976}
   - component: {fileID: -4991989802442301305}
-  - component: {fileID: -7421805405893434350}
   - component: {fileID: 6065756519158485090}
+  - component: {fileID: -558163207844424972}
   m_Layer: 0
   m_Name: BatteryRed
   m_TagString: Battery
@@ -208,28 +208,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-7421805405893434350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2347617137457816977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e983f04502f28ce41800eeff7a50bfef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  redBatteryOBJ: {fileID: 2347617137457816977}
-  bluBatteryOBJ: {fileID: 0}
-  grnBatteryOBJ: {fileID: 0}
-  ylwBatteryOBJ: {fileID: 0}
-  throwDistanceUp: 3
-  moveSpeedUp: 2
-  healthUp: 3
-  jumpHeightUp: 2
-  PowerUp: {fileID: 8300000, guid: ee29ad394c20ea540a860050964efe75, type: 3}
-  source: {fileID: 6065756519158485090}
 --- !u!82 &6065756519158485090
 AudioSource:
   m_ObjectHideFlags: 0
@@ -240,8 +218,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 21e46859d5ac7db49a706fadc67fa104, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -250,7 +228,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 69.76
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
@@ -326,3 +304,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-558163207844424972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347617137457816977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0340d732cf882dc42b9f1f3112067b4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  batteryType: 0
+  throwDistanceUp: 3
+  moveSpeedUp: 2
+  healthUp: 3
+  jumpHeightUp: 2
+  PowerUp: {fileID: 8300000, guid: 21e46859d5ac7db49a706fadc67fa104, type: 3}
+  source: {fileID: 6065756519158485090}

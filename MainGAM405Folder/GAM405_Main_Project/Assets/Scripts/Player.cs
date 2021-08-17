@@ -25,10 +25,10 @@ public class Player : Character
 
     public float jumpBoost = 1.5f;
     public float launchDistance = 3.0f;
+    public float blastOffDistance = 1.0f;
     new public float health = 6.0f;
     new public float moveSpeed = 3.0f;
     new public float jumpHeight = 3.0f;
-    new public float blastOffDistance = 1.0f;
     public int lifeCount = 4;
     protected float moveHorizontal, moveVertical, jumpUp, blastLaunch;
     private float playerVelocity = 2.5f;
@@ -102,7 +102,6 @@ public class Player : Character
             }
         }
 
-
         //Get violently thrown up and away by a tosser robot enemy.
         if (collision.gameObject.CompareTag("Tosser"))
         {
@@ -120,6 +119,14 @@ public class Player : Character
             {
                 SceneManager.LoadScene(gameOverScene);
             }
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Battery>())
+        {
+            playerAudio.PlayOneShot(itemPickup);
         }
     }
 

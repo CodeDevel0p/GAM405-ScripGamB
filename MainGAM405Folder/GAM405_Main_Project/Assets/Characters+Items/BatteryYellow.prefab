@@ -107,8 +107,8 @@ GameObject:
   - component: {fileID: 4469557244178637631}
   - component: {fileID: 4469557244178637628}
   - component: {fileID: 2203218971124057810}
-  - component: {fileID: -1171386179845742670}
-  - component: {fileID: 2776354665678699851}
+  - component: {fileID: 4732335301347461044}
+  - component: {fileID: -5520427760905640584}
   m_Layer: 0
   m_Name: BatteryYellow
   m_TagString: Battery
@@ -208,7 +208,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-1171386179845742670
+--- !u!114 &4732335301347461044
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,20 +217,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4469557244178637629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e983f04502f28ce41800eeff7a50bfef, type: 3}
+  m_Script: {fileID: 11500000, guid: 0340d732cf882dc42b9f1f3112067b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redBatteryOBJ: {fileID: 0}
-  bluBatteryOBJ: {fileID: 0}
-  grnBatteryOBJ: {fileID: 0}
-  ylwBatteryOBJ: {fileID: 4469557244178637629}
+  batteryType: 3
   throwDistanceUp: 3
   moveSpeedUp: 2
   healthUp: 3
   jumpHeightUp: 2
-  PowerUp: {fileID: 8300000, guid: ee29ad394c20ea540a860050964efe75, type: 3}
-  source: {fileID: 2776354665678699851}
---- !u!82 &2776354665678699851
+  PowerUp: {fileID: 8300000, guid: 21e46859d5ac7db49a706fadc67fa104, type: 3}
+  source: {fileID: -5520427760905640584}
+--- !u!82 &-5520427760905640584
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,8 +237,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 21e46859d5ac7db49a706fadc67fa104, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -250,7 +247,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 69.76
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
