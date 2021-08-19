@@ -76,6 +76,8 @@ public class Player : Character
             rb.AddForce(Vector3.up * launchDistance * blastOffDistance * playerVelocity, ForceMode.VelocityChange);
             playerAudio.PlayOneShot(blastOffAudio, 0.4f);
         }
+        PlayerStatsTrack();
+
     }
 
     //The main stats the player loads in with at the start of the game.
@@ -98,7 +100,7 @@ public class Player : Character
             
             if (health == 0)
             {
-                PlayerStatsTrack();
+             SceneManager.LoadScene(gameOverScene);
             }
         }
 
@@ -117,22 +119,43 @@ public class Player : Character
             lifeCount--;
             if (lifeCount == 0)
             {
-                SceneManager.LoadScene(gameOverScene);
+             SceneManager.LoadScene(gameOverScene);
             }
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<Battery>())
+        other.GetComponent<Battery>();
+        playerAudio.PlayOneShot(itemPickup);
+
+        //Switch statement to determine what stats are influenced by the player picking up a certain battery.
+        switch (other.GetComponent<Battery>().batteryType)
         {
-            playerAudio.PlayOneShot(itemPickup);
+            case Battery.BatteryType.Red:
+                blastOffDistance++;
+                Destroy(other);
+                break;
+            case Battery.BatteryType.Blue:
+                moveSpeed += 1.5f;
+                Destroy(other);
+                break;
+            case Battery.BatteryType.Green:
+                health += 10.0f;
+                Destroy(other);
+                break;
+            case Battery.BatteryType.Yellow:
+                jumpHeight += 1.5f;
+                Destroy(other);
+                break;
         }
+
     }
 
     //Keep track of player's stats with this function
     public void PlayerStatsTrack ()
     {
+
         Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight +
        " Blast-jump Height = " + blastOffDistance + "Lives Left = " + lifeCount);
         if (health == 0)

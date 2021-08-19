@@ -14,6 +14,7 @@ public class Battery : MonoBehaviour
     }
 
     public BatteryType batteryType;
+    public GameObject batteryModel;
     protected Rigidbody rb;
 
     public float throwDistanceUp = 3.0f;
@@ -42,6 +43,7 @@ public class Battery : MonoBehaviour
             {
                 case BatteryType.Red:
                     Debug.Log("The player has absorbed a RED power up! Blast Distance Up!");
+                    
                     Destroy(this.gameObject);
                     break;
                     

@@ -344,7 +344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainGameScene: Game_Level_1
-  controlsScene: 
   trainingScene: Testing_Environment_Scene
   buttonSelect: {fileID: 8300000, guid: d8ebaaad306e23d41b13adf06fa3e22c, type: 3}
   musicPlay: {fileID: 8300000, guid: 1a9c2bb63ac0d4f4a8e534300655720b, type: 3}

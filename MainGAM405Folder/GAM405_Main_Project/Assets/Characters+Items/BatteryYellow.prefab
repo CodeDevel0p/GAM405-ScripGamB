@@ -221,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   batteryType: 3
+  batteryModel: {fileID: 4469557244178637629}
   throwDistanceUp: 3
   moveSpeedUp: 2
   healthUp: 3

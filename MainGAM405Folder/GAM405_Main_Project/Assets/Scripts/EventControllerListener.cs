@@ -12,12 +12,15 @@ public class EventControllerListener : MonoBehaviour
 {
 
     public string returnMenuPress = "MainMenuScene";
-    
-    
+    public string gameOverScene = "Player_Lose_Scene";
+
 
     //This event is supposed to track the player's stats and update them to the User Interface display
     public UnityEvent Event1Stats;
     public UnityEvent Event2UIUpdate;
+
+    public delegate void GameOverEvent(string gameOverScene);
+    public event GameOverEvent event5;
 
     //This event is for the collision between the player and the batteries
     public UnityEvent Event3;
@@ -30,6 +33,9 @@ public class EventControllerListener : MonoBehaviour
     {
         Event1Stats.Invoke();
         GetComponent<Enemy>();
+        GetComponent<Player>();
+        event5.Invoke(gameOverScene);
+        //event5.Invoke(gameOverScene);
     }
 
     // Update is called once per frame
@@ -46,10 +52,10 @@ public class EventControllerListener : MonoBehaviour
             SceneManager.LoadScene(returnMenuPress);
         }
 
-        GetComponent<Player>();
-       
+      if (GetComponent<Player>().health <= 0)
         {
-
+           // event5.Invoke(gameOverScene);
+            SceneManager.LoadScene(gameOverScene);
         }
 
         

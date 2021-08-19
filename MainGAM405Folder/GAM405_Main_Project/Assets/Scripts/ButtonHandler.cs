@@ -8,7 +8,6 @@ public class ButtonHandler : MonoBehaviour
 {
 
     public string mainGameScene = "Game_Level_1";
-    public string controlsScene;
     public string trainingScene = "Testing_Environment_Scene";
 
     public AudioClip buttonSelect;
@@ -32,7 +31,7 @@ public class ButtonHandler : MonoBehaviour
 
     public void ClickStart()
     {
-        OnPlay();
+        source.PlayOneShot(buttonSelect);
         Debug.Log("Start the Game");
         SceneManager.LoadScene(mainGameScene);
 
@@ -40,7 +39,7 @@ public class ButtonHandler : MonoBehaviour
 
     public void ClickControls()
     {
-        OnPlay();
+        source.PlayOneShot(buttonSelect);
         Debug.Log("Loads up the controls");
         controlCanvas.enabled = true;
 
@@ -48,7 +47,7 @@ public class ButtonHandler : MonoBehaviour
 
     public void ClickTraining()
     {
-        OnPlay();
+        source.PlayOneShot(buttonSelect);
         Debug.Log("Go to Training Stage");
         SceneManager.LoadScene(trainingScene);
       
@@ -56,7 +55,7 @@ public class ButtonHandler : MonoBehaviour
 
     public void ClickExit()
     {
-        OnPlay();
+        source.PlayOneShot(buttonSelect);
         return;
  
     }
@@ -66,10 +65,4 @@ public class ButtonHandler : MonoBehaviour
         musicPlay = GetComponent<AudioClip>();
     }
 
-    public void OnPlay()
-    {
-        buttonSelect = GetComponent<AudioClip>();
-        source.PlayOneShot(buttonSelect);
-    }
-   
 }

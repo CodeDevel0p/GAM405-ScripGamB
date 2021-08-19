@@ -12,6 +12,7 @@ public class Camera_Canvas_UserInterface : MonoBehaviour
     public Text playerJumpHeight, jumpValue;
     public Text playerThrowDistance, throwValue;
     public Text remainingTimeLeft, timerValue;
+    public Canvas playerCanvasUI;
     public string gameOverScene = "Player_Lose_Scene";
 
     public Transform target;
@@ -26,12 +27,12 @@ public class Camera_Canvas_UserInterface : MonoBehaviour
     void LateUpdate()
     {
         transform.position = target.position + offsetVal;
-       
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<Player>();
         sourceMusic = GetComponent<AudioSource>();
     }
 
@@ -70,5 +71,10 @@ public class Camera_Canvas_UserInterface : MonoBehaviour
 
         
         timerValue.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void DisplayPlayerStats()
+    {
+
     }
 }
