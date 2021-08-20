@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 
 public class EventControllerListener : MonoBehaviour
 {
+    public Text playerLives, playerHealth, playerMoveSpeed, playerJumpHeight, playerBlastOff;
+    public Text remainingTimeLeft, timerValue;
+    public Canvas playerCanvasUI;
 
     public string returnMenuPress = "MainMenuScene";
     public string gameOverScene = "Player_Lose_Scene";
@@ -42,6 +45,8 @@ public class EventControllerListener : MonoBehaviour
     void Update()
     {
         SceneManagerEvent();
+
+        //"Remaining Lives: " + PlayerLives.ToString() + GetComponent<Player>().lifeCount;
     }
 
     public void SceneManagerEvent()
@@ -60,4 +65,6 @@ public class EventControllerListener : MonoBehaviour
 
         
     }
+
 }
+

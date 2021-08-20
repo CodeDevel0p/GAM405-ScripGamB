@@ -79,6 +79,7 @@
     <Compile Include="Assets\Scripts\TestControls.cs" />
     <Compile Include="Assets\Scripts\UI_Listener.cs" />
     <Compile Include="Assets\Scripts\WallController.cs" />
+    <Compile Include="Assets\TestUI_Listener.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.11f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>

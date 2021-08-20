@@ -5,15 +5,14 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Camera_Canvas_UserInterface : MonoBehaviour
-{          
-    public Text playerLives, lifeCount;
-    public Text playerHealth, healthValue;
-    public Text playerMovespeed, moveValue;
-    public Text playerJumpHeight, jumpValue;
-    public Text playerThrowDistance, throwValue;
+{
+    public Text playerLives, playerHealth, playerMoveSpeed, playerJumpHeight, playerBlastOff;
+    public float trackingLife, trackingHealth, trackingSpeed, trackingJump, trackingBlast;
     public Text remainingTimeLeft, timerValue;
     public Canvas playerCanvasUI;
     public string gameOverScene = "Player_Lose_Scene";
+
+
 
     public Transform target;
     public Vector3 offsetVal;
@@ -33,12 +32,25 @@ public class Camera_Canvas_UserInterface : MonoBehaviour
     void Start()
     {
         GetComponent<Player>();
+
+      //  trackingLife = GetComponent<Player>().health;
+        playerLives.text = "Remaining Lives :" + GetComponent<Player>().health;
+        playerHealth.text = trackingHealth.ToString();
+        trackingHealth = GetComponent<Player>().health;
+        trackingSpeed = GetComponent<Player>().moveSpeed;
+        trackingJump = GetComponent<Player>().jumpHeight;
+        trackingBlast = GetComponent<Player>().blastOffDistance;
         sourceMusic = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+           
+
+/*
+        playerLives.text = "Remaining Lives: " + TrackLives.ToString();
+        string.Format("Remaining Lives: ", TrackLives); */
 
         if (timer > 0)
         {
@@ -49,6 +61,7 @@ public class Camera_Canvas_UserInterface : MonoBehaviour
             timer = 0;
         }
         DisplayTimeLeft(timer);
+
     }
 
     public void PlayMusic()
@@ -69,9 +82,10 @@ public class Camera_Canvas_UserInterface : MonoBehaviour
         float minutes = Mathf.FloorToInt(timer / 60);
         float seconds = Mathf.FloorToInt(timer % 60);
 
-        
+
         timerValue.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
+
 
     public void DisplayPlayerStats()
     {

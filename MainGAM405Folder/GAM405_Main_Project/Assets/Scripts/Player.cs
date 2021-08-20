@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [SerializeField]
@@ -33,7 +34,9 @@ public class Player : Character
     protected float moveHorizontal, moveVertical, jumpUp, blastLaunch;
     private float playerVelocity = 2.5f;
     public string gameOverScene = "Player_Lose_Scene";
+    public Text playerLife, playerHealth, playerMove, playerJump, playerBlast;
     protected Rigidbody rb;
+    public Transform origin;
 
     public AudioClip jumpAudio;
     public AudioClip blastOffAudio;
@@ -44,11 +47,11 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
-        playerAudio = GetComponent<AudioSource>();
-        InitialStats();
-        rb = gameObject.GetComponent<Rigidbody>();
-        Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight + " Blast-jump Height = " + blastOffDistance);
         Debug.ClearDeveloperConsole();
+        playerAudio = GetComponent<AudioSource>();
+        rb = gameObject.GetComponent<Rigidbody>();
+        InitialStats();
+        
     }
 
     // Update is called once per frame
@@ -77,7 +80,7 @@ public class Player : Character
             playerAudio.PlayOneShot(blastOffAudio, 0.4f);
         }
         PlayerStatsTrack();
-
+        
     }
 
     //The main stats the player loads in with at the start of the game.
@@ -117,6 +120,7 @@ public class Player : Character
             Debug.Log("OUCH!!!");
             playerAudio.PlayOneShot(hurtSound);
             lifeCount--;
+            transform.position = origin.position;
             if (lifeCount == 0)
             {
              SceneManager.LoadScene(gameOverScene);
@@ -124,37 +128,43 @@ public class Player : Character
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider triggerInfo)
     {
-        other.GetComponent<Battery>();
         playerAudio.PlayOneShot(itemPickup);
 
         //Switch statement to determine what stats are influenced by the player picking up a certain battery.
-        switch (other.GetComponent<Battery>().batteryType)
+
+        var BatteryType = triggerInfo.GetComponent<Battery>().batteryType;  
+        switch (BatteryType)
         {
             case Battery.BatteryType.Red:
                 blastOffDistance++;
-                Destroy(other);
+                Destroy(triggerInfo);
                 break;
             case Battery.BatteryType.Blue:
                 moveSpeed += 1.5f;
-                Destroy(other);
+                Destroy(triggerInfo);
                 break;
             case Battery.BatteryType.Green:
                 health += 10.0f;
-                Destroy(other);
+                Destroy(triggerInfo);
                 break;
             case Battery.BatteryType.Yellow:
                 jumpHeight += 1.5f;
-                Destroy(other);
+                Destroy(triggerInfo);
                 break;
         }
 
     }
 
     //Keep track of player's stats with this function
-    public void PlayerStatsTrack ()
+    public void PlayerStatsTrack()//float playerHealth, float moveSpeed, float jumpHeight, float blastOffDistance, float lifeCount)
     {
+        playerLife.text = "Remaining Lives: " + lifeCount;
+        playerHealth.text = "Player Health: " + health;
+        playerMove.text = "Player Move Speed: " + moveSpeed;
+        playerJump.text = "Player Jump Height: " + jumpHeight;
+        playerBlast.text = "Blast Jump Force: " + blastOffDistance;
 
         Debug.Log("Health = " + health + " Move Speed = " + moveSpeed + " Jump Height = " + jumpHeight +
        " Blast-jump Height = " + blastOffDistance + "Lives Left = " + lifeCount);
